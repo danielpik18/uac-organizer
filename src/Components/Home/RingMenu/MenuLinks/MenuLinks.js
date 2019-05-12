@@ -21,11 +21,11 @@ const MenuLinks = ({ show }) => {
         }>
             <div className={styles.linksWrapper}>
                 <CircleLink icon={IoIosApps} title='Asignaturas' />
-                <CircleLink icon={IoIosTime} />
-                <CircleLink icon={IoIosAttach} />
-                <CircleLink icon={IoIosCheckbox} />
-                <CircleLink icon={IoIosPerson} />
-                <CircleLink icon={IoMdConstruct} />
+                <CircleLink icon={IoIosTime} title='Asignaturas' />
+                <CircleLink icon={IoIosAttach} title='Asignaturas' />
+                <CircleLink icon={IoIosCheckbox} title='Asignaturas' />
+                <CircleLink icon={IoIosPerson} title='Asignaturas' />
+                <CircleLink icon={IoMdConstruct} title='Asignaturas' />
             </div>
         </div>
     );

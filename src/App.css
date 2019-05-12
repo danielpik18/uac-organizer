@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Hind+Siliguri');
+
+html, body{
+    height: 100%;
+}
+
+body{
+    font-family: 'Hind Siliguri', sans-serif;
+    background: linear-gradient(to right, #3f4c6b 0%,#3f4c6b 100%);
+}

@@ -1,0 +1,19 @@
+$closeRed: rgb(100, 46, 46);
+
+.closeButtonWrapper{
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: .2rem;
+
+    &:hover{
+        background-color: $closeRed;
+    }
+}
+
+.windowTitle{
+    color: grey;
+    padding-left: 1rem;
+}
+
