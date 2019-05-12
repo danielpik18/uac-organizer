@@ -1,0 +1,28 @@
+$menuBG: #ccc;
+
+.MenuWrapper{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: 0 0;
+    transform: scale(0) translate(-50%, -50%);
+
+    background-color: $menuBG;
+    
+    width: 18rem;
+    height: 18rem;
+    border-radius: 50%;
+
+    
+    transition: all .4s ease-out;
+    opacity: 0;
+
+    &Show{
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%);
+    }
+}
+
+.linksWrapper{
+    position: relative;
+}

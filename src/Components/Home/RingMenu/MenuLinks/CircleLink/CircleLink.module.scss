@@ -1,0 +1,52 @@
+$linkIcon: rgb(119, 119, 119);
+$linkIconHover: rgb(165, 165, 165);
+
+.circleLink{
+    position: absolute;
+    border-radius: 50%;
+
+    &:nth-child(1){
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 15%);
+    }
+
+    &:nth-child(2){
+        left: 82.5%;
+        transform: translate(-50%, 100%);
+    }
+
+    &:nth-child(3){
+        left: 82.5%;
+        transform: translate(-50%, 245%);
+    }
+
+    &:nth-child(4){
+        left: 50%;
+        transform: translate(-50%, 315%);
+    }
+
+    &:nth-child(5){
+        left: 17.5%;
+        transform: translate(-50%, 245%);
+    }
+    
+    &:nth-child(6){
+        left: 17.5%;
+        transform: translate(-50%, 100%);
+    }
+
+}
+
+.linkIcon{
+    width: 2.4rem;
+    height: 2.4rem;
+    padding: .8rem;
+    
+    color: $linkIcon;
+    transition: color .2s;
+
+    &:hover{
+        color: $linkIconHover;
+    }
+}

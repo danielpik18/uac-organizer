@@ -1,0 +1,53 @@
+$toggleBgOpen: rgb(116, 167, 209);
+$toggleBgOpen2: #78cce0;
+
+$toggleBgClosed: rgb(209, 116, 116);
+$toggleBgClosed2: #e07878;
+
+$toggleIcon: rgb(230, 230, 230);
+
+.toggleIcon{
+    color: $toggleIcon;
+    font-size: 4rem;
+    opacity: .9;
+    transition: opacity .3s, transform .6s;
+    z-index: 12;
+    
+    &:hover{
+        opacity: 1;
+    }
+
+    &Animation{
+        transform: rotate(45deg);
+    }
+}
+
+.toggleButtonWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-image: radial-gradient($toggleBgOpen, $toggleBgOpen2);
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+    z-index: 10;
+}
+
+.redGradient{
+    opacity: 0;
+    
+    position: absolute;
+    top:  0;
+    
+    background-image: radial-gradient($toggleBgClosed, $toggleBgClosed2);
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+    z-index: 11;
+    transition: opacity .4s;
+
+    &Show{
+        opacity: 1;
+    }
+}
