@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import {
     IoIosApps,
-    IoIosTime,
-    IoIosAttach,
-    IoIosCheckbox,
-    IoIosPerson,
-    IoMdConstruct
+    IoIosTime
 } from 'react-icons/io';
 
 const WindowsContext = React.createContext();

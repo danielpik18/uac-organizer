@@ -1,0 +1,22 @@
+@import './../../../../scss//colors';
+
+$menuBorder: $greySemiLight solid 1px;
+
+.asignaturasMenu{
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: $greyLight;
+    height: 100%;
+    
+    &Wrapper{
+        height: 360px;
+    }
+
+    &Item{
+        border-bottom: $menuBorder !important;
+    }
+
+    &Icon{
+        font-size: .85rem;
+    }
+}

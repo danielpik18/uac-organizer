@@ -21,9 +21,9 @@ const ToggleButton = ({ open, clicked }) => {
 
             <div className={
                 `
-            ${styles.redGradient}
-            ${open && styles.redGradientShow}
-        `
+                ${styles.redGradient}
+                ${open && styles.redGradientShow}
+                `
             }>
             </div>
         </div>

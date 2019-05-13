@@ -1,29 +1,8 @@
-@import './../../../scss/variables.scss';
-
-$menuBorder: $greySemiLight solid 1px;
+@import './../../../scss/_colors.scss';
 
 .asignaturasWrapper{
     background-color: $white;
     height: 360px;
-}
-
-.asignaturasMenu{
-    margin: 0 !important;
-    padding: 0 !important;
-    background-color: $greyLight;
-    height: 100%;
-    
-    &Wrapper{
-        height: 360px;
-    }
-
-    &Item{
-        border-bottom: $menuBorder !important;
-    }
-
-    &Icon{
-        font-size: .85rem;
-    }
 }
 
 .asignaturas{
@@ -32,12 +11,20 @@ $menuBorder: $greySemiLight solid 1px;
 }
 
 .asignatura{
-    display: flex;
     width: 100%;
+    padding: .6rem;
+
+    display: flex;
     justify-content: space-between;
     
+    cursor: pointer;
+    transition: background-color .15s;
+    &:hover{
+        background-color: $white3;
+    }
+    
     &Wrapper{
-        padding: 0.4rem 1rem !important;
+        padding: 0 !important;
         border: $greyLight 1px solid;
     }
 

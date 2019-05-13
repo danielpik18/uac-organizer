@@ -1,15 +1,10 @@
-@import './../../../../scss/variables.scss';
+@import './../../../../scss/_colors.scss';
 
 .toggleIcon{
     color: $white;
     font-size: 4rem;
-    opacity: .9;
     transition: opacity .3s, transform .6s;
-    z-index: 12;
-    
-    &:hover{
-        opacity: 1;
-    }
+    z-index: 12;   
 
     &Animation{
         transform: rotate(45deg);
@@ -20,12 +15,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 
     background-image: radial-gradient($blueSemiLight, $blue);
     border-radius: 50%;
     width: 8rem;
     height: 8rem;
     z-index: 10;
+
+    transition: box-shadow .2s;
+
+    &:hover{
+        box-shadow: $greyLight 0px 0px 4px;
+    }
 }
 
 .redGradient{

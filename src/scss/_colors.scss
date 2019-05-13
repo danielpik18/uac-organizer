@@ -1,0 +1,90 @@
+//Colors
+$blue: #459bd4;
+$blueSemiLight: #98c8e7;
+$blueLight: #c1def1;
+$blueSemiDark: #2b82ba;
+$blueDark:#226591;
+
+$green: #58c256;
+$greenSemiLight: #7dd07c;
+$greenLight: #a2dda1;
+$greenSemiDark: #3ea93d;
+$greenDark: #31832f;
+
+$purple: #7c45d4;
+$purpleSemiLight: #a998e7;
+$purpleLight: #d3c1f1;
+$purpleSemiDark: #7a2bba;
+$purpleDark:#652291;
+
+$yellow: #c2c056;
+$yellowSemiLight: #c3d07c;
+$yellowLight: #dcdda1;
+$yellowSemiDark: #b4bb4f;
+$yellowDark: #82832f;
+
+$red: #d67272;
+$redSemiLight: #e08888;
+$redLight: #dfb4b4;
+$redSemiDark: #b45b5b;
+$redDark: #803939;
+
+$grey: #a7a7a7;
+$greySemiLight: #bbbbbb;
+$greyLight: #cecece;
+$greySemiDark: #8d8d8d;
+$greyDark: #636363;
+
+$white: rgb(248, 248, 248);
+$white2: rgb(233, 233, 233);
+$white3: rgb(228, 228, 228);
+
+$shadow: rgba(0, 0, 0, 0.705);
+$shadow2: rgba(0, 0, 0, 0.459);
+$shadow3: rgba(0, 0, 0, 0.178);
+
+:export {
+    blue: $blue;
+    blueSemiLight: $blueSemiLight;
+    blueLight: $blueLight;
+    blueSemiDark: $blueSemiDark;
+    blueDark: $blueDark;
+
+    green: $green;
+    greenSemiLight: $greenSemiLight;
+    greenLight: $greenLight;
+    greenSemiDark: $greenSemiDark;
+    greenDark: $greenDark;
+
+    red: $red;
+    redSemiLight: $redSemiLight;
+    redLight: $redLight;
+    redSemiDark: $redSemiDark;
+    redDark: $redDark;
+
+    purple: $purple;
+    purpleSemiLight: $purpleSemiLight;
+    purpleLight: $purpleLight;
+    purpleSemiDark: $purpleSemiDark;
+    purpleDark: $purpleDark;
+
+    yellow: $yellow;
+    yellowSemiLight: $yellowSemiLight;
+    yellowLight: $yellowLight;
+    yellowSemiDark: $yellowSemiDark;
+    yellowDark: $yellowDark;
+
+    grey: $grey;
+    greySemiLight: $greySemiLight;
+    greyLight: $greyLight;
+    greySemiDark: $greySemiDark;
+    greyDark: $greyDark;
+
+    white: $white;
+    white2: $white2;
+    white3: $white3;
+
+    shadow: $shadow;
+    shadow2: $shadow2;
+    shadow3: $shadow3;
+}

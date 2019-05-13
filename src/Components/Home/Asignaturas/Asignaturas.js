@@ -1,16 +1,73 @@
 import React from 'react';
+
 import Window from './../../../hoc/Window/Window';
 import { WindowsContext } from './../../../Contexts/WindowsContext/WindowsContext';
+import { AsignaturasContext } from './../../../Contexts/AsignaturasContext/AsignaturasContext';
 
-import { Grid, List, ListItem, ListItemIcon, ListItemText, Badge, Button } from '@material-ui/core';
+import { Grid, List, ListItem, Badge, Button } from '@material-ui/core';
 import * as TipyIcons from 'react-icons/ti';
+import { Fade } from 'react-reveal';
 
 import styles from './Asignaturas.module.scss';
 
 import asignaturas from './../../../dummyData/asignaturas';
+import AsignaturasMenu from './AsignaturasMenu/AsignaturasMenu';
 
 const Asignaturas = () => {
-    const { TiEdit, TiThList, TiTime } = TipyIcons;
+    const { TiEdit, TiTime } = TipyIcons;
+
+    const createAsignaturaJSX = (asignatura) => {
+        const Icon = TipyIcons[asignatura.icon];
+
+        return (
+            <AsignaturasContext.Consumer>
+                {(context) => (
+                    <ListItem
+                        key={asignatura.id}
+                        className={styles.asignaturaWrapper}
+                        onClick={() => console.log(asignatura.id)}
+                    >
+                        <div className={styles.asignatura}>
+                            <div
+                                className={styles.asignaturaTitle}
+                                style={{
+                                    color: asignatura.color
+                                }}
+                            >
+                                <Icon className={styles.asignaturaIcon} />
+                                <b>
+                                    {asignatura.name}
+                                </b>
+                            </div>
+
+                            <div className={styles.asignaturaEntregas}>
+                                {
+                                    asignatura.entregas.length > 0 &&
+                                    <Fade right>
+                                        <Button>
+                                            <Badge badgeContent={asignatura.entregas.length} color="secondary">
+                                                <TiTime className={styles.asignaturaEntregasIcon} />
+                                            </Badge>
+                                        </Button>
+                                    </Fade>
+                                }
+                            </div>
+                        </div>
+                    </ListItem>
+                )}
+            </AsignaturasContext.Consumer>
+        );
+    }
+
+    const renderAsignaturas = () => {
+        return asignaturas.map(asignatura => createAsignaturaJSX(asignatura))
+    };
+
+    const renderAsignaturasConEntregas = () => {
+        const asignaturasConEntregas = asignaturas.filter(asignatura => asignatura.entregas.length > 0);
+
+        return asignaturasConEntregas.map(asignatura => createAsignaturaJSX(asignatura));
+    };
 
     return (
         <div>
@@ -24,54 +81,30 @@ const Asignaturas = () => {
                     >
                         <div className={styles.asignaturasWrapper}>
                             <Grid container>
-                                <Grid item xs={3}>
-                                    <div className={styles.asignaturasMenuWrapper}>
-                                        <List className={styles.asignaturasMenu}>
-                                            <ListItem button className={styles.asignaturasMenuItem}>
-                                                <ListItemIcon className={styles.asignaturasMenuIcon}>
-                                                    <TiThList />
-                                                </ListItemIcon>
-                                                <ListItemText secondary='Todas' />
-                                            </ListItem>
-                                            <ListItem button className={styles.asignaturasMenuItem}>
-                                                <ListItemIcon className={styles.asignaturasMenuIcon}>
-                                                    <TiTime />
-                                                </ListItemIcon>
-                                                <ListItemText secondary='Con entregas' />
-                                            </ListItem>
-                                        </List>
-                                    </div>
-                                </Grid>
+                                <AsignaturasMenu />
 
-                                <Grid xs={9}>
-                                    <List className={styles.asignaturas}>
-                                        {
-                                            asignaturas.map(asignatura => {
-                                                const Icon = TipyIcons[asignatura.icon];
-
+                                <Grid item xs={9}>
+                                    <AsignaturasContext.Consumer>
+                                        {(context) => {
+                                            if (context.currentView === context.views.list) {
                                                 return (
-                                                    <ListItem key={asignatura.id} className={styles.asignaturaWrapper}>
-                                                        <div className={styles.asignatura}>
-                                                            <div className={styles.asignaturaTitle}>
-                                                                <Icon className={styles.asignaturaIcon} />
-                                                                <b>
-                                                                    {asignatura.name}
-                                                                </b>
-                                                            </div>
-
-                                                            <div className={styles.asignaturaEntregas}>
-                                                                <Button>
-                                                                    <Badge badgeContent={asignatura.entregas} color="secondary">
-                                                                        <TiTime className={styles.asignaturaEntregasIcon} />
-                                                                    </Badge>
-                                                                </Button>
-                                                            </div>
-                                                        </div>
-                                                    </ListItem>
+                                                    <List className={styles.asignaturas}>
+                                                        {
+                                                            renderAsignaturas()
+                                                        }
+                                                    </List>
                                                 );
-                                            })
-                                        }
-                                    </List>
+                                            } else if (context.currentView === context.views.listConEntregas) {
+                                                return (
+                                                    <List className={styles.asignaturas}>
+                                                        {
+                                                            renderAsignaturasConEntregas()
+                                                        }
+                                                    </List>
+                                                );
+                                            }
+                                        }}
+                                    </AsignaturasContext.Consumer>
                                 </Grid>
                             </Grid>
                         </div>

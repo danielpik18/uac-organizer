@@ -4,6 +4,7 @@ $linkIconHover: rgb(165, 165, 165);
 .circleLink{
     position: absolute;
     border-radius: 50%;
+    cursor: pointer;
 
     &:nth-child(1){
         top: 0;
