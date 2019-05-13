@@ -1,4 +1,12 @@
 import React, { Component } from 'react';
+import {
+    IoIosApps,
+    IoIosTime,
+    IoIosAttach,
+    IoIosCheckbox,
+    IoIosPerson,
+    IoMdConstruct
+} from 'react-icons/io';
 
 const WindowsContext = React.createContext();
 
@@ -6,17 +14,24 @@ class WindowsContextProvider extends Component {
     state = {
         windows: {
             asignaturas: {
-                width: '',
-                open: true
+                open: false,
+                title: 'asignaturas',
+                icon: IoIosApps
+            },
+            entregas: {
+                open: false,
+                title: 'entregas',
+                icon: IoIosTime
             }
         }
     }
 
     toggleWindow = (window) => {
+        const updatedWindows = { ...this.state.windows };
+        updatedWindows[window].open = !updatedWindows[window].open;
+
         this.setState({
-            windows: {
-                [window]: !this.state.windows[window].open
-            }
+            windows: updatedWindows
         });
     }
 
@@ -25,7 +40,7 @@ class WindowsContextProvider extends Component {
 
         return (
             <WindowsContext.Provider value={{
-                state: { ...this.state.windows },
+                windows: { ...this.state.windows },
                 toggleWindow: this.toggleWindow
             }}>
                 {children}

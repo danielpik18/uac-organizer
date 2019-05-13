@@ -1,19 +1,21 @@
-$closeRed: rgb(100, 46, 46);
+@import './../../../scss/variables.scss';
 
 .closeButtonWrapper{
     height: 100%;
     cursor: pointer;
     display: flex;
     align-items: center;
-    padding: .2rem;
 
     &:hover{
-        background-color: $closeRed;
+        background-color: $redDark;
     }
 }
 
 .windowTitle{
-    color: grey;
-    padding-left: 1rem;
+    color: $greySemiLight;
+    padding-left: 0.6rem;
+
+    display: flex;
+    align-items: center;
 }
 

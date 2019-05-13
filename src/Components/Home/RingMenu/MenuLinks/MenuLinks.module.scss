@@ -1,4 +1,5 @@
 $menuBG: #ccc;
+$menuBorder: rgb(139, 139, 139) solid 2px;
 
 .MenuWrapper{
     position: absolute;
@@ -12,6 +13,7 @@ $menuBG: #ccc;
     width: 18rem;
     height: 18rem;
     border-radius: 50%;
+    border: $menuBorder;
 
     
     transition: all .4s ease-out;

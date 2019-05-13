@@ -3,16 +3,16 @@ import RingMenu from './RingMenu/RingMenu';
 
 import { WindowsContext, WindowsContextProvider } from '../../Contexts/WindowsContext/WindowsContext';
 import Asignaturas from './Asignaturas/Asignaturas';
+import Entregas from './Entregas/Entregas';
 
 const Home = () => {
     return (
-        <>
+        <WindowsContextProvider context={WindowsContext}>
             <RingMenu />
 
-            <WindowsContextProvider context={WindowsContext}>
-                <Asignaturas />
-            </WindowsContextProvider>
-        </>
+            <Asignaturas />
+            <Entregas />
+        </WindowsContextProvider>
     );
 }
 

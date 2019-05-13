@@ -1,13 +1,7 @@
-$toggleBgOpen: rgb(116, 167, 209);
-$toggleBgOpen2: #78cce0;
-
-$toggleBgClosed: rgb(209, 116, 116);
-$toggleBgClosed2: #e07878;
-
-$toggleIcon: rgb(230, 230, 230);
+@import './../../../../scss/variables.scss';
 
 .toggleIcon{
-    color: $toggleIcon;
+    color: $white;
     font-size: 4rem;
     opacity: .9;
     transition: opacity .3s, transform .6s;
@@ -27,7 +21,7 @@ $toggleIcon: rgb(230, 230, 230);
     justify-content: center;
     align-items: center;
 
-    background-image: radial-gradient($toggleBgOpen, $toggleBgOpen2);
+    background-image: radial-gradient($blueSemiLight, $blue);
     border-radius: 50%;
     width: 8rem;
     height: 8rem;
@@ -40,7 +34,7 @@ $toggleIcon: rgb(230, 230, 230);
     position: absolute;
     top:  0;
     
-    background-image: radial-gradient($toggleBgClosed, $toggleBgClosed2);
+    background-image: radial-gradient($red, $redSemiLight);
     border-radius: 50%;
     width: 8rem;
     height: 8rem;
