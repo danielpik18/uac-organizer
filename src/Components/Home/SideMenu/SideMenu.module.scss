@@ -1,15 +1,14 @@
-@import './../../../../scss//colors';
+@import './../../../scss/colors';
 
 $menuBorder: $greySemiLight solid 1px;
 
 .asignaturasMenu{
     margin: 0 !important;
     padding: 0 !important;
-    background-color: $greyLight;
-    height: 100%;
-    
+
     &Wrapper{
-        height: 360px;
+        background-color: $greyLight;
+        height: 100%;
     }
 
     &Item{

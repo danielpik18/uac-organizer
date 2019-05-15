@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
-    IoIosApps,
-    IoIosTime
+    IoIosTime,
+    IoIosRibbon
 } from 'react-icons/io';
 
 const WindowsContext = React.createContext();
@@ -12,11 +12,13 @@ class WindowsContextProvider extends Component {
             asignaturas: {
                 open: false,
                 title: 'asignaturas',
-                icon: IoIosApps
+                width: 700,
+                icon: IoIosRibbon
             },
             entregas: {
                 open: false,
                 title: 'entregas',
+                width: 600,
                 icon: IoIosTime
             }
         }

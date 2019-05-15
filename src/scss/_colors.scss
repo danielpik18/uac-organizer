@@ -39,6 +39,10 @@ $white: rgb(248, 248, 248);
 $white2: rgb(233, 233, 233);
 $white3: rgb(228, 228, 228);
 
+$black: rgb(10, 10, 10);
+$black2: rgb(20, 20, 20);
+$black3: rgb(35, 35, 35);
+
 $shadow: rgba(0, 0, 0, 0.705);
 $shadow2: rgba(0, 0, 0, 0.459);
 $shadow3: rgba(0, 0, 0, 0.178);
@@ -83,6 +87,10 @@ $shadow3: rgba(0, 0, 0, 0.178);
     white: $white;
     white2: $white2;
     white3: $white3;
+
+    black: $black;
+    black2: $black2;
+    black3: $black3;
 
     shadow: $shadow;
     shadow2: $shadow2;

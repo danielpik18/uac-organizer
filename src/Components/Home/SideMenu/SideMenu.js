@@ -1,31 +1,15 @@
 import React from 'react';
 import { Grid, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import { TiThList, TiTime } from 'react-icons/ti';
 
-import styles from './AsignaturasMenu.module.scss';
+import styles from './SideMenu.module.scss';
 
-import { AsignaturasContext } from '../../../../Contexts/AsignaturasContext/AsignaturasContext';
-
-const AsignaturasMenu = () => {
+const SideMenu = ({ context: Context, menuItems }) => {
     return (
         <Grid item xs={3}>
             <div className={styles.asignaturasMenuWrapper}>
                 <List className={styles.asignaturasMenu}>
-                    <AsignaturasContext.Consumer>
+                    <Context.Consumer>
                         {(context) => {
-                            const menuItems = [
-                                {
-                                    name: 'Todas',
-                                    icon: TiThList,
-                                    view: context.views.list
-                                },
-                                {
-                                    name: 'Con entrega',
-                                    icon: TiTime,
-                                    view: context.views.listConEntregas
-                                }
-                            ];
-
                             return menuItems.map(item => {
                                 const Icon = item.icon;
 
@@ -44,11 +28,11 @@ const AsignaturasMenu = () => {
                                 );
                             })
                         }}
-                    </AsignaturasContext.Consumer>
+                    </Context.Consumer>
                 </List>
             </div>
         </Grid>
     );
 }
 
-export default AsignaturasMenu;
+export default SideMenu;

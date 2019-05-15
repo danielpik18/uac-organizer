@@ -11,21 +11,32 @@ import { Fade } from 'react-reveal';
 import styles from './Asignaturas.module.scss';
 
 import asignaturas from './../../../dummyData/asignaturas';
-import AsignaturasMenu from './AsignaturasMenu/AsignaturasMenu';
+import Asignatura from './Asignatura/Asignatura';
+import SideMenu from '../SideMenu/SideMenu';
 
 const Asignaturas = () => {
-    const { TiEdit, TiTime } = TipyIcons;
+    const menuItems = [
+        {
+            name: 'Todas',
+            icon: TipyIcons.TiThList,
+            view: 'list'
+        },
+        {
+            name: 'Con entrega',
+            icon: TipyIcons.TiTime,
+            view: 'listConEntregas'
+        }
+    ];
 
     const createAsignaturaJSX = (asignatura) => {
         const Icon = TipyIcons[asignatura.icon];
 
         return (
-            <AsignaturasContext.Consumer>
+            <AsignaturasContext.Consumer key={asignatura.id}>
                 {(context) => (
                     <ListItem
-                        key={asignatura.id}
                         className={styles.asignaturaWrapper}
-                        onClick={() => console.log(asignatura.id)}
+                        onClick={() => context.toggleView(`${context.views.asignatura}${asignatura.id}`)}
                     >
                         <div className={styles.asignatura}>
                             <div
@@ -46,7 +57,7 @@ const Asignaturas = () => {
                                     <Fade right>
                                         <Button>
                                             <Badge badgeContent={asignatura.entregas.length} color="secondary">
-                                                <TiTime className={styles.asignaturaEntregasIcon} />
+                                                <TipyIcons.TiTime className={styles.asignaturaEntregasIcon} />
                                             </Badge>
                                         </Button>
                                     </Fade>
@@ -59,60 +70,71 @@ const Asignaturas = () => {
         );
     }
 
-    const renderAsignaturas = () => {
-        return asignaturas.map(asignatura => createAsignaturaJSX(asignatura))
+    const renderAsignaturasList = () => {
+        return (
+            <List className={styles.asignaturas}>
+                {
+                    asignaturas
+                        .sort((a, b) => (a.entregas.length < b.entregas.length) ? 1 : -1)
+                        .map(asignatura => createAsignaturaJSX(asignatura))
+                }
+            </List>
+        );
     };
 
-    const renderAsignaturasConEntregas = () => {
+    const renderAsignaturasListConEntregas = () => {
         const asignaturasConEntregas = asignaturas.filter(asignatura => asignatura.entregas.length > 0);
 
-        return asignaturasConEntregas.map(asignatura => createAsignaturaJSX(asignatura));
+        return (
+            <List className={styles.asignaturas}>
+                {
+                    asignaturasConEntregas.map(asignatura => createAsignaturaJSX(asignatura))
+                }
+            </List>
+        )
+    };
+
+    const renderAsignatura = (view) => {
+        const id = parseInt(view.slice(10));
+
+        return <Asignatura id={id} />
     };
 
     return (
-        <div>
-            <WindowsContext.Consumer>
-                {(context) => (
+        <WindowsContext.Consumer>
+            {
+                (context) => (
                     context.windows.asignaturas.open &&
-                    <Window
-                        title='asignaturas'
-                        width={600}
-                        icon={TiEdit}
-                    >
-                        <div className={styles.asignaturasWrapper}>
-                            <Grid container>
-                                <AsignaturasMenu />
 
-                                <Grid item xs={9}>
-                                    <AsignaturasContext.Consumer>
-                                        {(context) => {
-                                            if (context.currentView === context.views.list) {
-                                                return (
-                                                    <List className={styles.asignaturas}>
-                                                        {
-                                                            renderAsignaturas()
-                                                        }
-                                                    </List>
-                                                );
-                                            } else if (context.currentView === context.views.listConEntregas) {
-                                                return (
-                                                    <List className={styles.asignaturas}>
-                                                        {
-                                                            renderAsignaturasConEntregas()
-                                                        }
-                                                    </List>
-                                                );
-                                            }
-                                        }}
-                                    </AsignaturasContext.Consumer>
-                                </Grid>
+                    <Window
+                        title={context.windows.asignaturas.title}
+                        width={context.windows.asignaturas.width}
+                        icon={context.windows.asignaturas.icon}
+                    >
+                        <Grid container className={styles.asignaturasWrapper}>
+                            <SideMenu
+                                menuItems={menuItems}
+                                context={AsignaturasContext}
+                            />
+
+                            <Grid item xs={9}>
+                                <AsignaturasContext.Consumer>
+                                    {(context) => {
+                                        if (context.currentView === context.views.list) {
+                                            return renderAsignaturasList();
+                                        } else if (context.currentView === context.views.listConEntregas) {
+                                            return renderAsignaturasListConEntregas();
+                                        } else if (context.currentView.includes(context.views.asignatura)) {
+                                            return renderAsignatura(context.currentView);
+                                        }
+                                    }}
+                                </AsignaturasContext.Consumer>
                             </Grid>
-                        </div>
+                        </Grid>
                     </Window>
                 )
-                }
-            </WindowsContext.Consumer>
-        </div>
+            }
+        </WindowsContext.Consumer>
     );
 }
 

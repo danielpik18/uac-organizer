@@ -7,7 +7,8 @@ class AsignaturasContextProvider extends Component {
         currentView: 'list',
         views: {
             list: 'list',
-            listConEntregas: 'listConEntregas'
+            listConEntregas: 'listConEntregas',
+            asignatura: 'asignatura'
 
         }
     }

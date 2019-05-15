@@ -1,0 +1,32 @@
+@import './../../../../scss/colors';
+
+.asignaturaHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem 0;
+
+    &Title{
+        display: flex;
+    }
+
+    &Icon{
+        font-size: 2rem;
+        margin-right: 1.2rem;
+    }
+
+    &EntregasIcon{
+        font-size: 1.4rem;
+    }
+}
+
+.asignaturaInfo{
+    display: flex;
+    justify-content: space-around;
+    font-size: .9rem;
+
+    &Text{
+        color: $greyDark;
+        margin-right: .4rem;
+    }
+}

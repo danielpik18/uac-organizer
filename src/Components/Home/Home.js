@@ -4,6 +4,7 @@ import RingMenu from './RingMenu/RingMenu';
 import { WindowsContext, WindowsContextProvider } from '../../Contexts/WindowsContext/WindowsContext';
 import Asignaturas from './Asignaturas/Asignaturas';
 import { AsignaturasContext, AsignaturasContextProvider } from '../../Contexts/AsignaturasContext/AsignaturasContext';
+import { EntregasContext, EntregasContextProvider } from './../../Contexts/EntregasContext/EntregasContext';
 
 import Entregas from './Entregas/Entregas';
 
@@ -16,7 +17,9 @@ const Home = () => {
                 <Asignaturas />
             </AsignaturasContextProvider>
 
-            <Entregas />
+            <EntregasContextProvider context={EntregasContext}>
+                <Entregas />
+            </EntregasContextProvider>
         </WindowsContextProvider>
     );
 }
