@@ -16,7 +16,7 @@ class WindowsContextProvider extends Component {
                 icon: IoIosRibbon
             },
             entregas: {
-                open: false,
+                open: true,
                 title: 'entregas',
                 width: 600,
                 icon: IoIosTime

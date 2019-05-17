@@ -4,12 +4,10 @@ const EntregasContext = React.createContext();
 
 class EntregasContextProvider extends Component {
     state = {
-        currentView: 'todas',
+        currentView: 'tareas',
         views: {
-            todas: 'todas',
-            estaSemana: 'estaSemana',
-            proximaSemana: 'proximaSemana'
-
+            tareas: 'tareas',
+            proyectos: 'proyectos'
         }
     }
 

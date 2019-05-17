@@ -15,21 +15,41 @@ import SideMenu from '../SideMenu/SideMenu';
 const Entregas = () => {
     const menuItems = [
         {
-            name: 'Todas',
+            name: 'Tareas',
             icon: TipyIcons.TiThList,
-            view: 'todas'
+            view: 'tareas'
         },
         {
-            name: 'Esta semana',
+            name: 'Proyectos',
             icon: TipyIcons.TiTime,
-            view: 'estaSemana'
-        },
-        {
-            name: 'Proxima semana',
-            icon: TipyIcons.TiTime,
-            view: 'proximaSemana'
+            view: 'proyectos'
         }
     ];
+
+    //Some necessary date reformatting...
+    entregas.map(entrega => {
+        const monthNames = [
+            "Enero", "Febrero", "Marzo",
+            "Abril", "Mayo", "Junio", "Julio",
+            "Agosto", "Septiembre", "Octubre",
+            "Noviembre", "Diciembre"
+        ];
+
+        const today = new Date();
+        const deadline = new Date(entrega.date);
+
+        let daysUntilDeadline = Math.abs(
+            Date.parse(today) - Date.parse(deadline)
+        );
+
+        daysUntilDeadline = Math.round(daysUntilDeadline / 86400000);
+
+        entrega.daysUntilDeadline = daysUntilDeadline;
+        entrega.date = [
+            `${deadline.getDate()} de ${monthNames[deadline.getMonth()]}`,
+            `${deadline.getHours()}:${deadline.getMinutes()}:${deadline.getSeconds()}`
+        ];
+    });
 
     const renderAll = () => {
         return (
@@ -38,11 +58,7 @@ const Entregas = () => {
     }
 
     const renderThisWeek = () => entregas.map(entrega => {
-        const date = new Date('2019, 5, 15');
-        const date2 = new Date('2019, 5, 16');
 
-        const dateDiff = Math.abs(Date.parse(date) - Date.parse(date2));
-        console.log(Math.floor(dateDiff) / 86400000);
 
         return (
             <Entrega key={entrega.id} data={entrega} />
@@ -69,10 +85,10 @@ const Entregas = () => {
                             <div className={styles.entregasWrapper}>
                                 <EntregasContext.Consumer>
                                     {(context) => {
-                                        if (context.currentView === context.views.todas) {
+                                        if (context.currentView === context.views.tareas) {
                                             return renderAll()
                                         }
-                                        else if (context.currentView === context.views.estaSemana) {
+                                        else if (context.currentView === context.views.proyectos) {
                                             return renderThisWeek()
                                         }
                                     }}

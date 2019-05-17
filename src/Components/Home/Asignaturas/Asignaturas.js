@@ -4,9 +4,8 @@ import Window from './../../../hoc/Window/Window';
 import { WindowsContext } from './../../../Contexts/WindowsContext/WindowsContext';
 import { AsignaturasContext } from './../../../Contexts/AsignaturasContext/AsignaturasContext';
 
-import { Grid, List, ListItem, Badge, Button } from '@material-ui/core';
+import { Grid, List, ListItem, Badge, Button, Fade, Slide } from '@material-ui/core';
 import * as TipyIcons from 'react-icons/ti';
-import { Fade } from 'react-reveal';
 
 import styles from './Asignaturas.module.scss';
 
@@ -54,13 +53,13 @@ const Asignaturas = () => {
                             <div className={styles.asignaturaEntregas}>
                                 {
                                     asignatura.entregas.length > 0 &&
-                                    <Fade right>
+                                    <Slide in={true} timeout={1000} direction={"left"}>
                                         <Button>
                                             <Badge badgeContent={asignatura.entregas.length} color="secondary">
                                                 <TipyIcons.TiTime className={styles.asignaturaEntregasIcon} />
                                             </Badge>
                                         </Button>
-                                    </Fade>
+                                    </Slide>
                                 }
                             </div>
                         </div>

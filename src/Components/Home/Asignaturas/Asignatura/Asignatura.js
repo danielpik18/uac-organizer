@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Divider, Button, Badge, Grow } from '@material-ui/core';
+import { Typography, Divider, Button, Badge } from '@material-ui/core';
 import { Fade } from 'react-reveal';
 import asignaturas from './../../../../dummyData/asignaturas';
 import * as TipyIcons from 'react-icons/ti';
@@ -28,13 +28,11 @@ const Asignatura = ({ id }) => {
 
                 {
                     asignatura.entregas.length > 0 &&
-                    <Grow in={true}>
-                        <Button>
-                            <Badge badgeContent={asignatura.entregas.length} color="secondary">
-                                <TipyIcons.TiTime className={styles.asignaturaHeaderEntregasIcon} />
-                            </Badge>
-                        </Button>
-                    </Grow>
+                    <Button>
+                        <Badge badgeContent={asignatura.entregas.length} color="secondary">
+                            <TipyIcons.TiTime className={styles.asignaturaHeaderEntregasIcon} />
+                        </Badge>
+                    </Button>
                 }
             </div>
 
