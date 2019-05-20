@@ -1,0 +1,46 @@
+@import './../../../../scss/colors';
+@import './../../../../scss/fonts';
+
+.entregasFilters{
+    background-color: $greyLight;
+    padding-left: 1rem;
+    border-bottom: solid 1px $greySemiLight;
+
+    &Text{
+        color: $black3;
+        font-size: .65rem;
+    }
+}
+
+.sortBy{
+    display: flex;
+
+    & > *{
+        display: flex;
+        align-items: center;
+        
+        &:not(:last-child){
+            margin-right: 3.5rem;
+        }
+    }
+
+    &Text{
+        color: $greyDark;
+        font-size: .75rem;
+        display: flex;
+        align-items: center;
+        margin-right: .2rem;
+    }
+
+    &Icon{
+        margin-right: .25rem;
+    }
+
+    &Select{
+        font-size: .75rem;
+        font-family: 'PT Sans narrow';
+        border: none;
+        min-width: 5rem;
+        background-color: $white2;
+    }
+}

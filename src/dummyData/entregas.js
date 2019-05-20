@@ -21,8 +21,24 @@ export default [
         id: 3,
         asignaturaID: 2,
         title: 'Traducir texto de espanol a ingles',
-        date: '5/21/2019 23:59:00',
+        date: '5/29/2019 23:59:00',
         color: cssColors.blue,
         colorSub: cssColors.blueSemiDark
+    },
+    {
+        id: 4,
+        asignaturaID: 1,
+        title: 'Hayar incognitas',
+        date: '6/5/2019 23:59:00',
+        color: cssColors.green,
+        colorSub: cssColors.greenSemiDark
+    },
+    {
+        id: 5,
+        asignaturaID: 1,
+        title: 'Hayar limites',
+        date: '5/23/2019 23:59:00',
+        color: cssColors.red,
+        colorSub: cssColors.redSemiDark
     }
 ]

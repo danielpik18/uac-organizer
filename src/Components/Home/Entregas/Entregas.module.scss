@@ -1,9 +1,11 @@
 @import './../../../scss/colors';
 
 .entregasWrapper{
+    overflow-y: scroll;
+    height: 20rem;
     background-color: $white3;
-    height: 25rem;
-    display: inline-block;
-    padding-left: .6rem;
-    padding-top: .6rem;
+}
+
+.entregasList{
+    padding: .6rem .7rem;
 }

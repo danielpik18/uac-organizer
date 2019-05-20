@@ -5,12 +5,13 @@ import { EntregasContext } from '../../../Contexts/EntregasContext/EntregasConte
 import entregas from './../../../dummyData/entregas';
 
 import * as TipyIcons from 'react-icons/ti';
+import { Grid } from '@material-ui/core';
 
 import styles from './Entregas.module.scss';
 
 import Entrega from './Entrega/Entrega';
-import { Grid } from '@material-ui/core';
 import SideMenu from '../SideMenu/SideMenu';
+import EntregasFilters from './EntregasFilters/EntregasFilters';
 
 const Entregas = () => {
     const menuItems = [
@@ -27,7 +28,7 @@ const Entregas = () => {
     ];
 
     //Some necessary date reformatting...
-    entregas.map(entrega => {
+    const entregasFormatted = entregas.map(entrega => {
         const monthNames = [
             "Enero", "Febrero", "Marzo",
             "Abril", "Mayo", "Junio", "Julio",
@@ -49,55 +50,76 @@ const Entregas = () => {
             `${deadline.getDate()} de ${monthNames[deadline.getMonth()]}`,
             `${deadline.getHours()}:${deadline.getMinutes()}:${deadline.getSeconds()}`
         ];
+
+        return entrega;
     });
 
     const renderAll = () => {
         return (
-            entregas.map(entrega => <Entrega key={entrega.id} data={entrega} />)
+            entregasFormatted.map(
+                entrega =>
+                    <Entrega key={entrega.id} data={entrega} />
+            )
         );
     }
 
-    const renderThisWeek = () => entregas.map(entrega => {
+    const renderFiltered = (filters) => {
+        const entregasFiltered = entregasFormatted.filter(entrega => {
+            return filters.every(
+                filter => filter.filter && filter.filter(entrega)
+            );
+        });
 
+        return entregasFiltered.map(entrega => {
+            return (
+                <Entrega key={entrega.id} data={entrega} />
+            )
+        });
+    };
 
-        return (
-            <Entrega key={entrega.id} data={entrega} />
-        )
-    });
 
     return (
         <WindowsContext.Consumer>
-            {(context) => (
-                context.windows.entregas.open &&
+            {(context) => {
+                return (
+                    context.windows.entregas.open &&
 
-                <Window
-                    title={context.windows.entregas.title}
-                    width={context.windows.entregas.width}
-                    icon={context.windows.entregas.icon}
-                >
-                    <Grid container>
-                        <SideMenu
-                            menuItems={menuItems}
-                            context={EntregasContext}
-                        />
+                    <Window
+                        title={context.windows.entregas.title}
+                        width={context.windows.entregas.width}
+                        icon={context.windows.entregas.icon}
+                    >
+                        <Grid container>
+                            <SideMenu
+                                menuItems={menuItems}
+                                context={EntregasContext}
+                            />
 
-                        <Grid item xs={9}>
-                            <div className={styles.entregasWrapper}>
-                                <EntregasContext.Consumer>
-                                    {(context) => {
-                                        if (context.currentView === context.views.tareas) {
-                                            return renderAll()
-                                        }
-                                        else if (context.currentView === context.views.proyectos) {
-                                            return renderThisWeek()
-                                        }
-                                    }}
-                                </EntregasContext.Consumer>
-                            </div>
+                            <Grid item xs={9}>
+                                <EntregasFilters windowContext={context} />
+
+                                <div className={styles.entregasWrapper}>
+                                    <div className={styles.entregasList}>
+                                        <EntregasContext.Consumer>
+                                            {(entregasContext) => {
+                                                const views = entregasContext.views;
+
+                                                if (entregasContext.currentView === views.tareas.name) {
+                                                    if (views.tareas.filters.length > 0) {
+                                                        return renderFiltered(views.tareas.filters)
+                                                    }
+
+                                                    return renderAll();
+                                                }
+                                            }}
+                                        </EntregasContext.Consumer>
+                                    </div>
+                                </div>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                </Window>
-            )
+                    </Window>
+                );
+            }
             }
         </WindowsContext.Consumer>
     );

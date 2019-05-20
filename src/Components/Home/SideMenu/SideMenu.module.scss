@@ -9,6 +9,7 @@ $menuBorder: $greySemiLight solid 1px;
     &Wrapper{
         background-color: $greyLight;
         height: 100%;
+        border-right: $menuBorder;
     }
 
     &Item{

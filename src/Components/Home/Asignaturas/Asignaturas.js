@@ -4,7 +4,7 @@ import Window from './../../../hoc/Window/Window';
 import { WindowsContext } from './../../../Contexts/WindowsContext/WindowsContext';
 import { AsignaturasContext } from './../../../Contexts/AsignaturasContext/AsignaturasContext';
 
-import { Grid, List, ListItem, Badge, Button, Fade, Slide } from '@material-ui/core';
+import { Grid, List, ListItem, Badge, Button } from '@material-ui/core';
 import * as TipyIcons from 'react-icons/ti';
 
 import styles from './Asignaturas.module.scss';
@@ -53,13 +53,12 @@ const Asignaturas = () => {
                             <div className={styles.asignaturaEntregas}>
                                 {
                                     asignatura.entregas.length > 0 &&
-                                    <Slide in={true} timeout={1000} direction={"left"}>
-                                        <Button>
-                                            <Badge badgeContent={asignatura.entregas.length} color="secondary">
-                                                <TipyIcons.TiTime className={styles.asignaturaEntregasIcon} />
-                                            </Badge>
-                                        </Button>
-                                    </Slide>
+                                    <Button>
+                                        <Badge badgeContent={asignatura.entregas.length} color="secondary">
+                                            <TipyIcons.TiTime className={styles.asignaturaEntregasIcon} />
+                                        </Badge>
+                                    </Button>
+
                                 }
                             </div>
                         </div>
@@ -110,24 +109,26 @@ const Asignaturas = () => {
                         width={context.windows.asignaturas.width}
                         icon={context.windows.asignaturas.icon}
                     >
-                        <Grid container className={styles.asignaturasWrapper}>
+                        <Grid container>
                             <SideMenu
                                 menuItems={menuItems}
                                 context={AsignaturasContext}
                             />
 
                             <Grid item xs={9}>
-                                <AsignaturasContext.Consumer>
-                                    {(context) => {
-                                        if (context.currentView === context.views.list) {
-                                            return renderAsignaturasList();
-                                        } else if (context.currentView === context.views.listConEntregas) {
-                                            return renderAsignaturasListConEntregas();
-                                        } else if (context.currentView.includes(context.views.asignatura)) {
-                                            return renderAsignatura(context.currentView);
-                                        }
-                                    }}
-                                </AsignaturasContext.Consumer>
+                                <div className={styles.asignaturasWrapper}>
+                                    <AsignaturasContext.Consumer>
+                                        {(context) => {
+                                            if (context.currentView === context.views.list) {
+                                                return renderAsignaturasList();
+                                            } else if (context.currentView === context.views.listConEntregas) {
+                                                return renderAsignaturasListConEntregas();
+                                            } else if (context.currentView.includes(context.views.asignatura)) {
+                                                return renderAsignatura(context.currentView);
+                                            }
+                                        }}
+                                    </AsignaturasContext.Consumer>
+                                </div>
                             </Grid>
                         </Grid>
                     </Window>

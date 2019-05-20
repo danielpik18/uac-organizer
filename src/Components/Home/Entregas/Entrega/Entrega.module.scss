@@ -1,17 +1,22 @@
 @import './../../../../scss/colors';
 @import './../../../../scss/fonts';
 
+.grid{
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
 .entrega{
     display: inline-block;
     margin: .2rem;
-    width: 13rem;
+    width: 12.4rem;
     cursor: pointer;
+    transition: transform .15s ease-in-out;
 
     &Title{
         padding: .15rem 0;
         padding-left: .5rem;
         display: flex;
-        justify-content: start;
         
         &Text{
             white-space: nowrap;
@@ -57,6 +62,6 @@
     }
 
     &:hover{
-        transform: scale(1.05) !important;
+        transform: scale(1.025) !important;
     }
 }

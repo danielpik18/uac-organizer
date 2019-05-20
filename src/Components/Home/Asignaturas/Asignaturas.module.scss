@@ -3,6 +3,7 @@
 .asignaturasWrapper{
     background-color: $white;
     height: 25rem;
+    overflow-y: scroll;
 }
 
 .asignaturas{
@@ -25,7 +26,10 @@
     
     &Wrapper{
         padding: 0 !important;
-        border: $greyLight 1px solid;
+
+        &:not(:last-child){
+            border-bottom: $greyLight 1px solid;
+        } 
     }
 
     &Title{
