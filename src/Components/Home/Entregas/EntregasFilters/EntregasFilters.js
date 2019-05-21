@@ -75,11 +75,11 @@ const EntregasFilters = ({ windowContext }) => {
         }
     ];
 
-    const renderFilters = (filters) => filters.map(filter => {
+    const renderFilters = (filters) => filters.map((filter, i) => {
         const Icon = filter.icon;
 
         return (
-            <div>
+            <div key={i}>
                 <div className={styles.sortByText}>
                     <Icon className={styles.sortByIcon} />
                     <span>{filter.name}:</span>
@@ -118,42 +118,9 @@ const EntregasFilters = ({ windowContext }) => {
             <span className={styles.entregasFiltersText}>Ordenar por:</span>
 
             <div className={styles.sortBy}>
-
                 {
                     renderFilters(filters)
                 }
-                {/*
-                <div>
-                    <div className={styles.sortByText}>
-                        <TiTime className={styles.sortByIcon} />
-                        <span>Plazo:</span>
-                    </div>
-
-                    <div>
-                        <EntregasContext.Consumer>
-                            {(context) => {
-                                return (
-                                    <select
-                                        onChange={(event) => filters.sortByPlazo(context, event)}
-                                        className={styles.sortBySelect}
-                                        id={filterTypes.sortByPlazo}>
-                                        {
-                                            selectOptions.plazo.map(option => (
-                                                <option
-                                                    value={option.value}
-                                                    key={option.value}
-                                                >
-                                                    {option.label}
-                                                </option>
-                                            ))
-                                        }
-                                    </select>
-                                );
-                            }}
-                        </EntregasContext.Consumer>
-                    </div>
-                </div>
-                */}
             </div>
         </div>
     );

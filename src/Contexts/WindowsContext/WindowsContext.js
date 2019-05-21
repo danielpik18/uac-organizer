@@ -18,7 +18,7 @@ class WindowsContextProvider extends Component {
             entregas: {
                 open: true,
                 title: 'entregas',
-                width: 600,
+                width: 700,
                 icon: IoIosTime
             }
         }

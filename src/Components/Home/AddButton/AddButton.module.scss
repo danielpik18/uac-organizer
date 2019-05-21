@@ -1,0 +1,25 @@
+@import './../../../scss/colors';
+
+.wrapper{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 1.25rem;
+}
+
+.button{
+    background: $green !important;
+    box-shadow: 4px 6px 3px $shadow3 !important;
+    transition: all .25s ease-in-out !important;
+    z-index: 8500 !important;
+
+    &:hover{
+        opacity: .9;
+        transform: scale(.975);
+    }
+}
+
+.icon{
+    font-size: 2.6rem;
+    color: $white2;
+}

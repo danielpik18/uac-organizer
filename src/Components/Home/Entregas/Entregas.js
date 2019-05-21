@@ -12,6 +12,8 @@ import styles from './Entregas.module.scss';
 import Entrega from './Entrega/Entrega';
 import SideMenu from '../SideMenu/SideMenu';
 import EntregasFilters from './EntregasFilters/EntregasFilters';
+import AddButton from '../AddButton/AddButton';
+import AddEntrega from './AddEntrega/AddEntrega';
 
 const Entregas = () => {
     const menuItems = [
@@ -77,7 +79,6 @@ const Entregas = () => {
         });
     };
 
-
     return (
         <WindowsContext.Consumer>
             {(context) => {
@@ -96,7 +97,29 @@ const Entregas = () => {
                             />
 
                             <Grid item xs={9}>
-                                <EntregasFilters windowContext={context} />
+                                <EntregasContext.Consumer>
+                                    {(entregasContext) => {
+                                        if (entregasContext.currentView === entregasContext.views.tareas.name) {
+                                            return (
+                                                <AddButton
+                                                    title='Agregar nueva entrega'
+                                                    clicked={() => {
+                                                        entregasContext.toggleView('addEntrega')
+                                                    }}
+                                                />
+                                            )
+                                        }
+
+                                    }}
+                                </EntregasContext.Consumer>
+
+                                <EntregasContext.Consumer>
+                                    {(entregasContext) => {
+                                        if (entregasContext.currentView === entregasContext.views.tareas.name) {
+                                            return <EntregasFilters windowContext={context} />;
+                                        }
+                                    }}
+                                </EntregasContext.Consumer>
 
                                 <div className={styles.entregasWrapper}>
                                     <div className={styles.entregasList}>
@@ -110,6 +133,9 @@ const Entregas = () => {
                                                     }
 
                                                     return renderAll();
+                                                }
+                                                else if (entregasContext.currentView === 'addEntrega') {
+                                                    return <AddEntrega />
                                                 }
                                             }}
                                         </EntregasContext.Consumer>

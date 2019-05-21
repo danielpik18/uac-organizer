@@ -12,6 +12,7 @@ import styles from './Asignaturas.module.scss';
 import asignaturas from './../../../dummyData/asignaturas';
 import Asignatura from './Asignatura/Asignatura';
 import SideMenu from '../SideMenu/SideMenu';
+import AddButton from '../AddButton/AddButton';
 
 const Asignaturas = () => {
     const menuItems = [
@@ -116,6 +117,7 @@ const Asignaturas = () => {
                             />
 
                             <Grid item xs={9}>
+                                <AddButton title='Añadir asignatura' />
                                 <div className={styles.asignaturasWrapper}>
                                     <AsignaturasContext.Consumer>
                                         {(context) => {

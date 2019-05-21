@@ -4,22 +4,35 @@ const EntregasContext = React.createContext();
 
 class EntregasContextProvider extends Component {
     state = {
-        currentView: 'tareas',
+        currentView: 'addEntrega',
         views: {
             tareas: {
                 name: 'tareas',
                 filters: []
+            },
+            addEntrega: {
+                name: 'addEntrega'
             },
             proyectos: 'proyectos'
         }
     };
 
     toggleView = (view) => {
-        this.setState({ currentView: view });
+        const views = Object.values({ ...this.state.views });
+
+        views.forEach(view => {
+            if (view.filters) {
+                view.filters = [];
+            }
+        });
+
+        this.setState({
+            currentView: view
+        });
     };
 
     assignFilter = (filter, filterType) => {
-        const { currentView } = this.state;
+        const currentView = `${this.state.currentView}`;
 
         const sameTypeFilters = this.state.views[currentView].filters.filter(
             filter => filter.filterType === filterType
@@ -50,10 +63,11 @@ class EntregasContextProvider extends Component {
             flushFilters();
         }
 
+        const views = this.state.views;
+        views[currentView] = viewToFilter;
+
         this.setState({
-            views: {
-                [this.state.currentView]: viewToFilter
-            }
+            views
         });
 
     };
